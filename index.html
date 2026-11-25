@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#050810">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AudioScope Pro">
+    <title>AudioScope Pro 2000ms - Đo Sóng Âm & Phân Tích Đỉnh</title>
+
+    <!-- Inline Web App Manifest qua Data URI để cài đặt PWA trực tiếp từ một file HTML -->
+    <link rel="manifest" href='data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22AudioScope%20Pro%202000ms%22%2C%22short_name%22%3A%22AudioScope%22%2C%22description%22%3A%22M%C3%A1y%20hi%E1%BB%87n%20s%C3%B3ng%20%C3%A2m%20thanh%202000ms%20%26%20%C4%91o%20kho%E1%BA%A3ng%20c%C3%A1ch%20%C4%91%E1%BB%89nh%20s%C3%B3ng%20v%E1%BA%ADt%20l%C3%BD%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23050810%22%2C%22theme_color%22%3A%22%23050810%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%2520xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%2520viewBox%3D%270%25200%2520512%2520512%27%253E%253Crect%2520width%3D%27512%27%2520height%3D%27512%27%2520rx%3D%27112%27%2520fill%3D%27%2523050810%27%2F%253E%253Crect%2520x%3D%2720%27%2520y%3D%2720%27%2520width%3D%27472%27%2520height%3D%27472%27%2520rx%3D%2796%27%2520fill%3D%27none%27%2520stroke%3D%27%252306b6d4%27%2520stroke-width%3D%2714%27%2520stroke-opacity%3D%270.6%27%2F%253E%253Cpath%2520d%3D%27M56%2520256%2520H130%2520L170%2520110%2520L225%2520402%2520L285%252082%2520L335%2520370%2520L375%2520256%2520H456%27%2520fill%3D%27none%27%2520stroke%3D%27%252310b981%27%2520stroke-width%3D%2726%27%2520stroke-linecap%3D%27round%27%2520stroke-linejoin%3D%27round%27%2F%253E%253Ccircle%2520cx%3D%27170%27%2520cy%3D%27110%27%2520r%3D%2720%27%2520fill%3D%27%252306b6d4%27%2520stroke%3D%27%2523ffffff%27%2520stroke-width%3D%276%27%2F%253E%253Ccircle%2520cx%3D%27285%27%2520cy%3D%2782%27%2520r%3D%2720%27%2520fill%3D%27%2523f59e0b%27%2520stroke%3D%27%2523ffffff%27%2520stroke-width%3D%276%27%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D'>
+
+    <!-- Icon SVG sóng âm cho iOS & trình duyệt -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23050810'/%3E%3Crect x='20' y='20' width='472' height='472' rx='96' fill='none' stroke='%2306b6d4' stroke-width='14' stroke-opacity='0.6'/%3E%3Cpath d='M56 256 H130 L170 110 L225 402 L285 82 L335 370 L375 256 H456' fill='none' stroke='%2310b981' stroke-width='26' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='170' cy='110' r='20' fill='%2306b6d4' stroke='%23ffffff' stroke-width='6'/%3E%3Ccircle cx='285' cy='82' r='20' fill='%23f59e0b' stroke='%23ffffff' stroke-width='6'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23050810'/%3E%3Crect x='20' y='20' width='472' height='472' rx='96' fill='none' stroke='%2306b6d4' stroke-width='14' stroke-opacity='0.6'/%3E%3Cpath d='M56 256 H130 L170 110 L225 402 L285 82 L335 370 L375 256 H456' fill='none' stroke='%2310b981' stroke-width='26' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='170' cy='110' r='20' fill='%2306b6d4' stroke='%23ffffff' stroke-width='6'/%3E%3Ccircle cx='285' cy='82' r='20' fill='%23f59e0b' stroke='%23ffffff' stroke-width='6'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --drawer-bar-h: 40px;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100dvh;
+            max-height: 100dvh;
+            background-color: #050810;
+            color: #f1f5f9;
+            overflow: hidden;
+            overscroll-behavior: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        canvas, .jog-wheel {
+            touch-action: none;
+            display: block;
+        }
+        /* Hiệu ứng con lăn cơ học 3D */
+        .jog-wheel-shell {
+            background: linear-gradient(180deg, #060a12 0%, #11192c 22%, #1a2640 50%, #11192c 78%, #060a12 100%);
+            box-shadow:
+                inset 0 10px 16px -6px rgba(0, 0, 0, 0.92),
+                inset 0 -10px 16px -6px rgba(0, 0, 0, 0.92),
+                0 4px 14px rgba(0, 0, 0, 0.65);
+        }
+        .jog-wheel-shine {
+            background: linear-gradient(180deg,
+                rgba(2, 6, 15, 0.88) 0%,
+                rgba(2, 6, 15, 0.14) 28%,
+                rgba(255, 255, 255, 0.06) 50%,
+                rgba(2, 6, 15, 0.14) 72%,
+                rgba(2, 6, 15, 0.88) 100%);
+            pointer-events: none;
+        }
+        /* Thanh trượt kỹ thuật */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #1e293b;
+            height: 7px;
+            border-radius: 999px;
+            border: 1px solid #334155;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            border: 2px solid #050810;
+        }
+        input[type="range"].gain-slider::-webkit-slider-thumb {
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.85);
+        }
+        input[type="range"].trig-slider::-webkit-slider-thumb {
+            background: #ef4444;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.85);
+        }
+        input[type="range"].zoom-slider::-webkit-slider-thumb {
+            background: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.85);
+        }
+        .btn-press:active {
+            transform: scale(0.95);
+        }
+        /* Fallback toàn màn hình CSS khi bị iframe chặn Fullscreen API */
+        body.css-fullscreen {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100dvh !important;
+            z-index: 99999 !important;
+        }
+    </style>
+</head>
+<body class="flex flex-col w-screen overflow-hidden bg-[#050810] font-sans" style="height: 100dvh; padding-top: var(--safe-top);">
+
+    <!-- 1. THANH ĐIỀU KHIỂN TRÊN CÙNG (GỌN NHẸ 1 HÀNG / TỰ CO GIÃN) -->
+    <header class="shrink-0 bg-[#0a101d] border-b border-slate-800/90 px-1.5 sm:px-2.5 py-1 flex items-center justify-between gap-1 z-30">
+        <!-- Trạng thái thu âm & khung thời gian -->
+        <div class="flex items-center gap-1 bg-slate-950 border border-slate-800 rounded-lg px-1.5 py-1 shrink-0">
+            <span id="statusDot" class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            <span id="statusLabel" class="font-mono text-[9.5px] sm:text-[11px] font-bold text-cyan-300 tracking-tight">SẴN SÀNG</span>
+            <span class="text-slate-700">|</span>
+            <span id="recTimerText" class="font-mono text-[9.5px] sm:text-[11px] text-slate-300 tabular-nums">2000ms</span>
+        </div>
+
+        <!-- Cụm 5 nút tác vụ chính -->
+        <div class="flex items-center gap-1 overflow-x-auto no-scrollbar">
+            <button id="btnRecord" class="btn-press px-2 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10.5px] sm:text-xs flex items-center gap-1 shadow-sm border border-emerald-400/40 shrink-0 transition">
+                <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                <span>Ghi 2s</span>
+            </button>
+
+            <button id="btnTrigger" class="btn-press px-2 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold text-[10.5px] sm:text-xs flex items-center gap-1 shadow-sm border border-amber-400/40 shrink-0 transition">
+                <span id="trigDot" class="w-1.5 h-1.5 rounded-full bg-amber-200"></span>
+                <span id="trigText">Trigger</span>
+            </button>
+
+            <button id="btnStop" class="btn-press px-2 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-[10.5px] sm:text-xs flex items-center gap-1 shadow-sm border border-rose-400/40 shrink-0 transition">
+                <span class="w-1.5 h-1.5 rounded-xs bg-white"></span>
+                <span>Dừng</span>
+            </button>
+
+            <button id="btnSample" class="btn-press px-2 py-1 rounded-lg bg-indigo-600/90 hover:bg-indigo-500 text-white font-semibold text-[10.5px] sm:text-xs flex items-center gap-1 border border-indigo-400/40 shrink-0 transition" title="Tạo 2 xung âm thanh thử nghiệm">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>Xung mẫu</span>
+            </button>
+
+            <button id="btnFullscreen" class="btn-press px-1.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold text-[10.5px] sm:text-xs flex items-center gap-1 border border-cyan-500/40 shrink-0 transition" title="Toàn màn hình (Phím F)">
+                <svg id="iconFsOpen" class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                </svg>
+                <svg id="iconFsClose" class="w-3 h-3 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9V4H4m0 0l5 5m6-5h5v5m0-5l-5 5M9 15v5H4m0 0l5-5m6 5h5v-5m0 5l-5-5"/>
+                </svg>
+                <span class="hidden xs:inline sm:inline">Full</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. NỬA TRÊN MÀN HÌNH (~52% CHIỀU CAO): ĐỒ THỊ SÓNG ÂM THANH ĐỘ PHÂN GIẢI CAO -->
+    <section id="scopeViewport" class="h-[48%] sm:h-[52%] min-h-[175px] w-full relative bg-[#03060c] border-b border-slate-800 shrink-0">
+        <canvas id="waveCanvas" class="w-full h-full cursor-grab"></canvas>
+
+        <!-- Góc trên trái: Cửa sổ thời gian & Zoom -->
+        <div class="absolute top-1.5 left-10 pointer-events-none flex items-center gap-1 bg-[#070b14]/85 border border-slate-800/90 px-1.5 py-0.5 rounded-md text-[9.5px] sm:text-[10px] font-mono text-slate-300 backdrop-blur-xs">
+            <span id="hudWindow" class="text-sky-400 font-bold tabular-nums">0.0 → 2000.0 ms</span>
+            <span class="text-slate-600">|</span>
+            <span id="hudZoom" class="text-slate-300 tabular-nums">1.0x</span>
+        </div>
+
+        <!-- Góc trên phải: Thẻ HUD nổi Δt (ms) & Độ nhạy Gain -->
+        <div class="absolute top-1.5 right-1.5 pointer-events-none bg-[#070d19]/92 border border-emerald-500/50 rounded-xl px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xl backdrop-blur-sm flex items-center gap-2">
+            <div>
+                <div class="text-[8.5px] font-bold uppercase tracking-wider text-emerald-300/90 leading-none">Δt = |tB - tA|</div>
+                <div class="font-mono text-sm sm:text-xl font-extrabold text-emerald-400 tabular-nums leading-tight">
+                    <span id="hudDeltaT">45.50</span><span class="text-[9.5px] font-bold text-emerald-200 ml-0.5">ms</span>
+                </div>
+            </div>
+
+            <div class="h-6 w-[1px] bg-slate-700/80"></div>
+
+            <div class="text-right">
+                <div class="text-[8.5px] font-bold uppercase tracking-wider text-slate-400 leading-none">ĐỘ NHẠY</div>
+                <div id="hudGain" class="font-mono text-xs sm:text-sm font-extrabold text-cyan-300 tabular-nums leading-tight">1.0x</div>
+            </div>
+        </div>
+
+        <!-- Thanh nhắc trạng thái khi bật chế độ GHIM A hoặc GHIM B -->
+        <div id="pinModeBanner" class="hidden absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 px-2.5 py-1 rounded-full text-[10.5px] font-bold shadow-lg flex items-center gap-1.5 border backdrop-blur-sm whitespace-nowrap">
+            <span id="pinModeDot" class="w-2 h-2 rounded-full animate-ping"></span>
+            <span id="pinModeText">Chạm vào đỉnh sóng trên đồ thị để ghim A</span>
+            <button id="btnCancelPin" class="ml-1 px-1.5 py-0.5 rounded bg-black/40 hover:bg-black/60 text-[9.5px] uppercase tracking-wider">Hủy</button>
+        </div>
+
+        <!-- Toast thông báo nổi -->
+        <div id="toastBanner" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-20 bg-slate-900/95 border border-cyan-500/60 text-cyan-100 px-3 py-1 rounded-full text-[10.5px] font-medium shadow-lg pointer-events-none whitespace-nowrap">
+            <span id="toastMsg">Thông báo</span>
+        </div>
+
+        <!-- Thanh tiến trình 0 -> 2000 ms sát đáy đồ thị -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-slate-900/95 pointer-events-none">
+            <div id="captureProgress" class="h-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-sky-400 transition-all duration-75" style="width: 100%;"></div>
+        </div>
+    </section>
+
+    <!-- 3. NỬA DƯỚI MÀN HÌNH (~48% CHIỀU CAO): HAI CON LĂN DỌC CƠ HỌC & CỤM GHIM ĐỈNH GIỮA -->
+    <section class="flex-1 min-h-0 w-full bg-[#070b15] px-1.5 sm:px-2.5 pt-1.5 grid grid-cols-3 gap-1.5 sm:gap-3 items-stretch relative" style="padding-bottom: calc(var(--drawer-bar-h) + var(--safe-bottom) + 6px);">
+
+        <!-- CỘT TRÁI: CON LĂN DỌC CƠ HỌC ĐIỀU CHỈNH CHẤM A (CYAN #06b6d4) -->
+        <div class="flex flex-col items-center justify-between min-h-0 bg-[#0b1222] border border-[#06b6d4]/40 rounded-2xl p-1 sm:p-1.5 shadow-inner">
+            <div class="w-full shrink-0 text-center bg-[#050912] border border-[#06b6d4]/40 rounded-xl py-0.5 sm:py-1 px-1">
+                <div class="flex items-center justify-between px-1 text-[8.5px] sm:text-[10px] font-extrabold tracking-wider text-[#06b6d4]">
+                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#06b6d4]"></span>CHẤM A</span>
+                    <span id="wheelAmpA" class="font-mono text-cyan-200/80 tabular-nums">+88%</span>
+                </div>
+                <div class="font-mono text-xs sm:text-base font-extrabold text-white tabular-nums leading-tight">
+                    <span id="wheelTimeA">320.00</span><span class="text-[9px] sm:text-[10px] text-[#06b6d4] ml-0.5">ms</span>
+                </div>
+            </div>
+
+            <button id="btnStepUpA" class="btn-press shrink-0 w-full max-w-[116px] py-1 mt-1 rounded-t-xl bg-[#0f1a2e] hover:bg-[#162542] border-x border-t border-[#06b6d4]/40 text-[#06b6d4] text-[10px] font-extrabold flex items-center justify-center leading-none transition" title="Tiến +1 mẫu sóng">
+                ▲
+            </button>
+
+            <div id="jogWheelA" class="jog-wheel jog-wheel-shell relative w-full max-w-[116px] flex-1 min-h-[28px] border-x-2 border-[#06b6d4]/55 overflow-hidden cursor-ns-resize flex items-center justify-center">
+                <canvas id="wheelCanvasA" class="w-full h-full pointer-events-none"></canvas>
+                <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#06b6d4] shadow-[0_0_8px_#06b6d4] pointer-events-none"></div>
+                <div class="jog-wheel-shine absolute inset-0"></div>
+            </div>
+
+            <button id="btnStepDownA" class="btn-press shrink-0 w-full max-w-[116px] py-1 rounded-b-xl bg-[#0f1a2e] hover:bg-[#162542] border-x border-b border-[#06b6d4]/40 text-[#06b6d4] text-[10px] font-extrabold flex items-center justify-center leading-none transition" title="Lùi -1 mẫu sóng">
+                ▼
+            </button>
+        </div>
+
+        <!-- CỘT GIỮA: NÚT GHIM A / GHIM B, TỐC ĐỘ LĂN & TÌM 2 ĐỈNH -->
+        <div class="flex flex-col justify-between min-h-0 bg-[#0b1222] border border-slate-800 rounded-2xl p-1 sm:p-1.5">
+            <!-- Hàng 1: Nút Ghim A & Ghim B -->
+            <div class="shrink-0">
+                <div class="text-[8.5px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center mb-0.5">Chạm đỉnh để ghim</div>
+                <div class="grid grid-cols-2 gap-1">
+                    <button id="btnPinModeA" class="btn-press py-1.5 px-1 rounded-xl bg-[#06b6d4]/15 hover:bg-[#06b6d4]/25 border border-[#06b6d4]/55 text-[#06b6d4] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 transition">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#06b6d4] shrink-0"></span>
+                        <span>Ghim A</span>
+                    </button>
+                    <button id="btnPinModeB" class="btn-press py-1.5 px-1 rounded-xl bg-[#f59e0b]/15 hover:bg-[#f59e0b]/25 border border-[#f59e0b]/55 text-[#f59e0b] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 transition">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b] shrink-0"></span>
+                        <span>Ghim B</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hàng 2: Công tắc 3 tốc độ lăn -->
+            <div class="my-0.5 shrink-0">
+                <div class="text-[8.5px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center mb-0.5">Tốc độ lăn</div>
+                <div class="grid grid-cols-1 gap-0.5 bg-[#050912] p-0.5 sm:p-1 rounded-xl border border-slate-800">
+                    <button data-speed="fine" class="speed-btn py-0.5 sm:py-1 px-1 rounded-lg bg-emerald-500/25 border border-emerald-400/60 text-emerald-200 font-bold text-[10px] sm:text-[11px] leading-tight transition">
+                        Siêu mịn <span class="hidden sm:inline font-mono text-[9px] opacity-80">(1 mẫu)</span>
+                    </button>
+                    <button data-speed="med" class="speed-btn py-0.5 sm:py-1 px-1 rounded-lg bg-transparent border border-transparent text-slate-400 hover:text-slate-200 font-semibold text-[10px] sm:text-[11px] leading-tight transition">
+                        Vừa <span class="hidden sm:inline font-mono text-[9px] opacity-80">(0.1 ms)</span>
+                    </button>
+                    <button data-speed="fast" class="speed-btn py-0.5 sm:py-1 px-1 rounded-lg bg-transparent border border-transparent text-slate-400 hover:text-slate-200 font-semibold text-[10px] sm:text-[11px] leading-tight transition">
+                        Nhanh <span class="hidden sm:inline font-mono text-[9px] opacity-80">(1.0 ms)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hàng 3: Nút Tự tìm 2 đỉnh cao nhất -->
+            <button id="btnFind2Peaks" class="btn-press shrink-0 w-full py-1.5 px-1 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/60 text-amber-200 font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 shadow-sm transition">
+                <svg class="w-3 h-3 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                <span>Tìm 2 đỉnh</span>
+            </button>
+        </div>
+
+        <!-- CỘT PHẢI: CON LĂN DỌC CƠ HỌC ĐIỀU CHỈNH CHẤM B (CAM #f59e0b) -->
+        <div class="flex flex-col items-center justify-between min-h-0 bg-[#0b1222] border border-[#f59e0b]/40 rounded-2xl p-1 sm:p-1.5 shadow-inner">
+            <div class="w-full shrink-0 text-center bg-[#050912] border border-[#f59e0b]/40 rounded-xl py-0.5 sm:py-1 px-1">
+                <div class="flex items-center justify-between px-1 text-[8.5px] sm:text-[10px] font-extrabold tracking-wider text-[#f59e0b]">
+                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>CHẤM B</span>
+                    <span id="wheelAmpB" class="font-mono text-amber-200/80 tabular-nums">+74%</span>
+                </div>
+                <div class="font-mono text-xs sm:text-base font-extrabold text-white tabular-nums leading-tight">
+                    <span id="wheelTimeB">365.50</span><span class="text-[9px] sm:text-[10px] text-[#f59e0b] ml-0.5">ms</span>
+                </div>
+            </div>
+
+            <button id="btnStepUpB" class="btn-press shrink-0 w-full max-w-[116px] py-1 mt-1 rounded-t-xl bg-[#0f1a2e] hover:bg-[#162542] border-x border-t border-[#f59e0b]/40 text-[#f59e0b] text-[10px] font-extrabold flex items-center justify-center leading-none transition" title="Tiến +1 mẫu sóng">
+                ▲
+            </button>
+
+            <div id="jogWheelB" class="jog-wheel jog-wheel-shell relative w-full max-w-[116px] flex-1 min-h-[28px] border-x-2 border-[#f59e0b]/55 overflow-hidden cursor-ns-resize flex items-center justify-center">
+                <canvas id="wheelCanvasB" class="w-full h-full pointer-events-none"></canvas>
+                <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#f59e0b] shadow-[0_0_8px_#f59e0b] pointer-events-none"></div>
+                <div class="jog-wheel-shine absolute inset-0"></div>
+            </div>
+
+            <button id="btnStepDownB" class="btn-press shrink-0 w-full max-w-[116px] py-1 rounded-b-xl bg-[#0f1a2e] hover:bg-[#162542] border-x border-b border-[#f59e0b]/40 text-[#f59e0b] text-[10px] font-extrabold flex items-center justify-center leading-none transition" title="Lùi -1 mẫu sóng">
+                ▼
+            </button>
+        </div>
+
+    </section>
+
+    <!-- LỚP PHỦ MỜ KHI MỞ NGĂN KÉO ĐÁY -->
+    <div id="drawerBackdrop" class="fixed inset-0 bg-black/70 backdrop-blur-[1px] z-30 hidden opacity-0 transition-opacity duration-200"></div>
+
+    <!-- 4. NGĂN THÔNG SỐ TRƯỢT TỪ DƯỚI ĐÁY MÀN HÌNH (BOTTOM SHEET) -->
+    <aside id="bottomDrawer" class="fixed left-0 right-0 bottom-0 z-40 bg-[#0c1424] border-t-2 border-slate-700/90 rounded-t-2xl shadow-[0_-12px_40px_rgba(0,0,0,0.88)] transition-transform duration-300 ease-out" style="padding-bottom: var(--safe-bottom); transform: translateY(calc(100% - var(--drawer-bar-h) - var(--safe-bottom)));">
+        
+        <!-- Thanh tóm tắt cố định ở cạnh đáy -->
+        <div id="drawerHandle" class="h-[40px] px-2.5 sm:px-3.5 flex items-center justify-between cursor-pointer select-none touch-none">
+            <div class="flex items-center gap-1.5 font-mono text-[10px] sm:text-xs tabular-nums overflow-hidden whitespace-nowrap">
+                <span class="text-emerald-400 font-extrabold">Δt:<span id="miniDeltaT">45.50</span>ms</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-purple-300 font-bold"><span id="miniFreq">21.98</span>Hz</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-sky-300 font-bold"><span id="miniDist">15.61m</span></span>
+            </div>
+
+            <div class="hidden sm:block w-10 h-1 rounded-full bg-slate-600"></div>
+
+            <div class="flex items-center gap-1 text-[10.5px] sm:text-[11px] font-bold text-cyan-300 shrink-0 ml-1">
+                <span>Thông số & Cài đặt</span>
+                <svg id="drawerChevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 15l7-7 7 7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Nội dung chi tiết bên trong ngăn kéo -->
+        <div class="px-3.5 pb-5 pt-2 max-h-[82dvh] overflow-y-auto space-y-3 border-t border-slate-800/80">
+
+            <!-- Bảng 6 thông số đo lường chi tiết -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono tabular-nums">
+                <div class="bg-emerald-950/50 border border-emerald-500/45 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-emerald-300">KHOẢNG THỜI GIAN Δt</div>
+                    <div class="text-sm sm:text-base font-extrabold text-emerald-400"><span id="detailDeltaT">45.500</span> <span class="text-xs text-emerald-200">ms</span></div>
+                </div>
+
+                <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-purple-300">TẦN SỐ (f = 1000/Δt)</div>
+                    <div id="detailFreq" class="text-sm sm:text-base font-bold text-purple-200">21.98 Hz</div>
+                </div>
+
+                <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-sky-300">KHOẢNG CÁCH (v = 343 m/s)</div>
+                    <div id="detailDist" class="text-sm sm:text-base font-bold text-sky-200">15.61 m</div>
+                </div>
+
+                <div class="bg-[#060a14] border border-[#06b6d4]/40 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-[#06b6d4]">VỊ TRÍ CHẤM A (tA)</div>
+                    <div class="text-sm sm:text-base font-extrabold text-white"><span id="detailTimeA">320.000</span> <span class="text-xs text-slate-400">ms</span></div>
+                </div>
+
+                <div class="bg-[#060a14] border border-[#f59e0b]/40 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-[#f59e0b]">VỊ TRÍ CHẤM B (tB)</div>
+                    <div class="text-sm sm:text-base font-extrabold text-white"><span id="detailTimeB">365.500</span> <span class="text-xs text-slate-400">ms</span></div>
+                </div>
+
+                <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2">
+                    <div class="text-[10px] font-sans font-bold text-slate-400">TẦN SỐ LẤY MẪU</div>
+                    <div id="detailSampleRate" class="text-sm sm:text-base font-bold text-slate-200">48,000 Hz</div>
+                </div>
+            </div>
+
+            <!-- Thanh trượt Độ nhạy khuếch đại (Gain 1.0x -> 10.0x) -->
+            <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2.5 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-emerald-400">Độ nhạy khuếch đại (Gain)</span>
+                    <span id="detailGainLabel" class="font-mono text-xs font-extrabold text-emerald-300 tabular-nums">1.0x (+0.0 dB)</span>
+                </div>
+                <input type="range" id="sliderGain" min="1.0" max="10.0" step="0.1" value="1.0" class="w-full gain-slider">
+                <div class="grid grid-cols-4 gap-1.5">
+                    <button data-gain="1" class="gain-btn py-1 rounded-lg bg-emerald-500/25 border border-emerald-400/60 text-emerald-200 font-mono text-xs font-bold">1x</button>
+                    <button data-gain="2" class="gain-btn py-1 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 font-mono text-xs">2x</button>
+                    <button data-gain="5" class="gain-btn py-1 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 font-mono text-xs">5x</button>
+                    <button data-gain="10" class="gain-btn py-1 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 font-mono text-xs">10x</button>
+                </div>
+            </div>
+
+            <!-- Thanh trượt Ngưỡng Trigger (1% -> 100%) -->
+            <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2.5 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-red-400">Ngưỡng Trigger (kèm 40ms Pre-Trigger)</span>
+                    <span id="detailTrigLabel" class="font-mono text-xs font-extrabold text-red-400 tabular-nums">15%</span>
+                </div>
+                <input type="range" id="sliderTrigger" min="0.01" max="1.00" step="0.01" value="0.15" class="w-full trig-slider">
+            </div>
+
+            <!-- Thanh điều khiển Zoom (1x -> 100x) & Minimap 2000ms -->
+            <div class="bg-[#060a14] border border-slate-800 rounded-xl p-2.5 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-sky-400">Thu phóng Zoom & Minimap 2000ms</span>
+                    <div class="flex items-center gap-2">
+                        <span id="detailZoomLabel" class="font-mono text-xs font-bold text-sky-300 tabular-nums">1.0x (2000 ms)</span>
+                        <button id="btnResetZoom" class="px-2 py-0.5 rounded bg-sky-500/20 border border-sky-400/50 text-sky-300 font-mono text-[11px] font-bold">Toàn cảnh</button>
+                    </div>
+                </div>
+                <input type="range" id="sliderZoom" min="1" max="100" step="0.5" value="1" class="w-full zoom-slider">
+                <div class="h-10 w-full bg-[#03060c] border border-slate-800 rounded-lg relative overflow-hidden">
+                    <canvas id="minimapCanvas" class="w-full h-full cursor-pointer"></canvas>
+                    <span class="absolute left-1.5 top-0.5 text-[9px] font-mono text-slate-500 pointer-events-none">0ms</span>
+                    <span class="absolute right-1.5 top-0.5 text-[9px] font-mono text-slate-500 pointer-events-none">2000ms</span>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <script>
+        /**
+         * =====================================================================
+         * 1. SERVICE WORKER BLOB OFFLINE CACHING CHO PWA ĐỘC LẬP
+         * =====================================================================
+         */
+        (function registerOfflineServiceWorker() {
+            try {
+                if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+                    const swCode = `
+                        const CACHE_NAME = 'audioscope-pro-2000ms-v2';
+                        self.addEventListener('install', (event) => {
+                            self.skipWaiting();
+                        });
+                        self.addEventListener('activate', (event) => {
+                            event.waitUntil(clients.claim());
+                        });
+                        self.addEventListener('fetch', (event) => {
+                            if (event.request.method !== 'GET') return;
+                            event.respondWith(
+                                caches.open(CACHE_NAME).then(async (cache) => {
+                                    const cached = await cache.match(event.request);
+                                    try {
+                                        const fresh = await fetch(event.request);
+                                        if (fresh && fresh.status === 200) {
+                                            cache.put(event.request, fresh.clone());
+                                        }
+                                        return fresh;
+                                    } catch (err) {
+                                        return cached || Response.error();
+                                    }
+                                })
+                            );
+                        });
+                    `;
+                    const swBlob = new Blob([swCode], { type: 'application/javascript' });
+                    navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+                }
+            } catch (err) {
+                // Bỏ qua nếu sandbox iframe hạn chế Blob Service Worker
+            }
+        })();
+
+        /**
+         * =====================================================================
+         * 2. LÕI XỬ LÝ ÂM THANH & ĐỒ THỊ SÓNG 2000 MS
+         * =====================================================================
+         */
+        const TOTAL_MS = 2000.0;
+        const PRE_TRIGGER_MS = 40.0;
+        const SOUND_SPEED_M_PER_MS = 0.343; // 343 m/s = 0.343 m/ms
+
+        let sampleRate = 48000;
+        let totalSamples = Math.floor(sampleRate * (TOTAL_MS / 1000));
+        let waveBuffer = new Float32Array(totalSamples);
+
+        // Web Audio API
+        let audioCtx = null;
+        let micStream = null;
+        let sourceNode = null;
+        let processorNode = null;
+
+        let systemState = 'IDLE'; // 'IDLE' | 'RECORDING' | 'ARMED' | 'TRIGGERED_RECORDING'
+        let capturedSamples = 0;
+
+        // Bộ đệm vòng Pre-Trigger 40ms
+        let preTriggerLen = Math.floor(sampleRate * (PRE_TRIGGER_MS / 1000));
+        let preTriggerRing = new Float32Array(preTriggerLen);
+        let preTriggerIdx = 0;
+
+        // Hiển thị, Gain, Trigger & Chấm đo A/B
+        let viewStartMs = 0.0;
+        let viewSpanMs = 2000.0;
+        let gainValue = 1.0;
+        let triggerThreshold = 0.15;
+
+        let cursorAMs = 320.00;
+        let cursorBMs = 365.50;
+
+        // Chế độ Ghim đỉnh bằng cách chạm lên đồ thị ('A' | 'B' | null)
+        let pendingPinTarget = null;
+
+        // Con lăn cơ học
+        let wheelSpeedMode = 'fine';
+        let wheelAngleA = 0;
+        let wheelAngleB = 0;
+        let lastHapticStepA = 0;
+        let lastHapticStepB = 0;
+
+        // Kéo thả trên đồ thị
+        let canvasDragMode = null;
+        let panStartX = 0;
+        let panStartViewMs = 0;
+        let pinchDistStart = null;
+        let pinchSpanStart = null;
+
+        // Canvas contexts
+        const waveCanvas = document.getElementById('waveCanvas');
+        const ctx = waveCanvas.getContext('2d');
+        const wheelCanvasA = document.getElementById('wheelCanvasA');
+        const wCtxA = wheelCanvasA.getContext('2d');
+        const wheelCanvasB = document.getElementById('wheelCanvasB');
+        const wCtxB = wheelCanvasB.getContext('2d');
+        const miniCanvas = document.getElementById('minimapCanvas');
+        const miniCtx = miniCanvas.getContext('2d');
+
+        // --- NỘI SUY BIÊN ĐỘ SÓNG TẠI THỜI ĐIỂM t (MS) ---
+        function getInterpolatedAmplitude(tMs) {
+            const exactIdx = (tMs / 1000) * sampleRate;
+            const i0 = Math.max(0, Math.min(totalSamples - 1, Math.floor(exactIdx)));
+            const i1 = Math.max(0, Math.min(totalSamples - 1, i0 + 1));
+            const frac = exactIdx - Math.floor(exactIdx);
+            return waveBuffer[i0] * (1 - frac) + waveBuffer[i1] * frac;
+        }
+
+        // --- TẠO 2 XUNG MẪU THỬ NGHIỆM (~45.50 MS) ---
+        function generateSamplePulses() {
+            stopCapture(false);
+            sampleRate = audioCtx ? audioCtx.sampleRate : 48000;
+            totalSamples = Math.floor(sampleRate * (TOTAL_MS / 1000));
+            waveBuffer = new Float32Array(totalSamples);
+            document.getElementById('detailSampleRate').textContent = `${sampleRate.toLocaleString('en-US')} Hz`;
+
+            for (let i = 0; i < totalSamples; i++) {
+                waveBuffer[i] = (Math.random() - 0.5) * 0.004;
+            }
+
+            injectImpulse(320.00, 0.88, 1280, 8.5);
+            injectImpulse(365.50, 0.74, 1420, 10.5);
+            injectImpulse(580.00, 0.26, 960, 15.0);
+
+            cursorAMs = findNearestPeakMs(320.00, 4);
+            cursorBMs = findNearestPeakMs(365.50, 4);
+            setZoom(2000, 1000);
+            updateAllReadouts();
+            updateProgressBar(TOTAL_MS);
+            setStatusUI('XUNG MẪU', 'bg-indigo-400', 'text-indigo-300');
+            showToast('Đã tạo 2 xung mẫu cách nhau 45.50 ms.');
+        }
+
+        function injectImpulse(startMs, amplitude, freqHz, decayMs) {
+            const startIdx = Math.floor((startMs / 1000) * sampleRate);
+            const len = Math.floor((decayMs * 6.5 / 1000) * sampleRate);
+            for (let i = 0; i < len; i++) {
+                const idx = startIdx + i;
+                if (idx >= 0 && idx < totalSamples) {
+                    const tSec = i / sampleRate;
+                    const tMs = tSec * 1000;
+                    const env = Math.min(1, tMs / 0.3) * Math.exp(-tMs / decayMs);
+                    const wave = Math.sin(2 * Math.PI * freqHz * tSec) + 0.28 * Math.sin(2 * Math.PI * freqHz * 2.08 * tSec);
+                    waveBuffer[idx] += amplitude * env * (wave / 1.28);
+                }
+            }
+        }
+
+        // --- CHẾ ĐỘ GHIM A / GHIM B CHẠM LÊN ĐỈNH ĐỒ THỊ ---
+        function setPinMode(target) {
+            pendingPinTarget = (pendingPinTarget === target) ? null : target;
+            const btnA = document.getElementById('btnPinModeA');
+            const btnB = document.getElementById('btnPinModeB');
+            const banner = document.getElementById('pinModeBanner');
+            const dot = document.getElementById('pinModeDot');
+            const txt = document.getElementById('pinModeText');
+
+            btnA.className = 'btn-press py-1.5 px-1 rounded-xl bg-[#06b6d4]/15 hover:bg-[#06b6d4]/25 border border-[#06b6d4]/55 text-[#06b6d4] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 transition';
+            btnB.className = 'btn-press py-1.5 px-1 rounded-xl bg-[#f59e0b]/15 hover:bg-[#f59e0b]/25 border border-[#f59e0b]/55 text-[#f59e0b] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 transition';
+
+            if (pendingPinTarget === 'A') {
+                btnA.className = 'btn-press py-1.5 px-1 rounded-xl bg-[#06b6d4] border border-white text-[#03060c] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 shadow-[0_0_14px_rgba(6,182,212,0.7)] transition';
+                banner.className = 'absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 px-2.5 py-1 rounded-full text-[10.5px] font-bold shadow-lg flex items-center gap-1.5 border border-[#06b6d4] bg-[#042f38]/95 text-cyan-100 backdrop-blur-sm whitespace-nowrap';
+                dot.className = 'w-2 h-2 rounded-full bg-[#06b6d4] animate-ping';
+                txt.textContent = 'Chạm vào đỉnh sóng trên đồ thị để ghim A';
+                waveCanvas.style.cursor = 'crosshair';
+            } else if (pendingPinTarget === 'B') {
+                btnB.className = 'btn-press py-1.5 px-1 rounded-xl bg-[#f59e0b] border border-white text-[#03060c] font-extrabold text-[10px] sm:text-xs flex items-center justify-center gap-1 shadow-[0_0_14px_rgba(245,158,11,0.7)] transition';
+                banner.className = 'absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 px-2.5 py-1 rounded-full text-[10.5px] font-bold shadow-lg flex items-center gap-1.5 border border-[#f59e0b] bg-[#3b2104]/95 text-amber-100 backdrop-blur-sm whitespace-nowrap';
+                dot.className = 'w-2 h-2 rounded-full bg-[#f59e0b] animate-ping';
+                txt.textContent = 'Chạm vào đỉnh sóng trên đồ thị để ghim B';
+                waveCanvas.style.cursor = 'crosshair';
+            } else {
+                banner.classList.add('hidden');
+                waveCanvas.style.cursor = 'grab';
+            }
+        }
+
+        // --- THU ÂM WEB AUDIO API (TẮT LỌC TỰ ĐỘNG + PRE-TRIGGER 40MS) ---
+        async function startCapture(mode) {
+            try {
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    showToast('Trình duyệt không hỗ trợ Micro. Hãy dùng nút Xung mẫu.');
+                    return;
+                }
+
+                if (!audioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    audioCtx = new AudioContext();
+                }
+                if (audioCtx.state === 'suspended') {
+                    await audioCtx.resume();
+                }
+
+                if (sampleRate !== audioCtx.sampleRate) {
+                    sampleRate = audioCtx.sampleRate;
+                    totalSamples = Math.floor(sampleRate * (TOTAL_MS / 1000));
+                    waveBuffer = new Float32Array(totalSamples);
+                    preTriggerLen = Math.floor(sampleRate * (PRE_TRIGGER_MS / 1000));
+                    preTriggerRing = new Float32Array(preTriggerLen);
+                    document.getElementById('detailSampleRate').textContent = `${sampleRate.toLocaleString('en-US')} Hz`;
+                }
+
+                if (!micStream) {
+                    micStream = await navigator.mediaDevices.getUserMedia({
+                        audio: {
+                            echoCancellation: false,
+                            noiseSuppression: false,
+                            autoGainControl: false
+                        }
+                    });
+                }
+
+                disconnectNodes();
+
+                sourceNode = audioCtx.createMediaStreamSource(micStream);
+                processorNode = audioCtx.createScriptProcessor(1024, 1, 1);
+
+                systemState = mode;
+                capturedSamples = 0;
+                preTriggerRing.fill(0);
+                preTriggerIdx = 0;
+                setZoom(2000, 1000);
+
+                if (mode === 'RECORDING') {
+                    waveBuffer.fill(0);
+                    updateProgressBar(0);
+                    setStatusUI('ĐANG GHI', 'bg-rose-500 animate-ping', 'text-rose-400');
+                } else if (mode === 'ARMED') {
+                    updateProgressBar(0);
+                    setStatusUI('CHỜ TRIGGER', 'bg-amber-400 animate-pulse', 'text-amber-300');
+                    document.getElementById('trigDot').className = 'w-1.5 h-1.5 rounded-full bg-white animate-ping';
+                    document.getElementById('trigText').textContent = 'Đang rình';
+                }
+
+                processorNode.onaudioprocess = (event) => {
+                    const inputData = event.inputBuffer.getChannelData(0);
+                    processAudioChunk(inputData);
+                };
+
+                sourceNode.connect(processorNode);
+                processorNode.connect(audioCtx.destination);
+            } catch (err) {
+                console.error(err);
+                showToast('Không mở được Micro. Kiểm tra quyền hoặc chạy qua HTTPS.');
+                stopCapture(false);
+            }
+        }
+
+        function disconnectNodes() {
+            if (processorNode) {
+                processorNode.disconnect();
+                processorNode = null;
+            }
+            if (sourceNode) {
+                sourceNode.disconnect();
+                sourceNode = null;
+            }
+        }
+
+        function stopCapture(notify = true) {
+            const wasActive = systemState !== 'IDLE';
+            systemState = 'IDLE';
+            disconnectNodes();
+            document.getElementById('trigDot').className = 'w-1.5 h-1.5 rounded-full bg-amber-200';
+            document.getElementById('trigText').textContent = 'Trigger';
+            if (wasActive) {
+                setStatusUI('ĐÃ KHÓA', 'bg-emerald-400', 'text-emerald-300');
+                if (notify) showToast('Đã dừng thu & khóa sóng trên đồ thị.');
+            }
+        }
+
+        function processAudioChunk(chunk) {
+            const len = chunk.length;
+
+            if (systemState === 'RECORDING') {
+                const remain = totalSamples - capturedSamples;
+                const copyCount = Math.min(len, remain);
+                waveBuffer.set(chunk.subarray(0, copyCount), capturedSamples);
+                capturedSamples += copyCount;
+
+                const msNow = (capturedSamples / sampleRate) * 1000;
+                updateProgressBar(msNow);
+                setStatusUI('ĐANG GHI', 'bg-rose-500 animate-ping', 'text-rose-400');
+
+                if (capturedSamples >= totalSamples) {
+                    stopCapture(false);
+                    updateProgressBar(TOTAL_MS);
+                    setStatusUI('ĐÃ KHÓA', 'bg-emerald-400', 'text-emerald-300');
+                    autoFindTwoHighestPeaks();
+                    showToast('Đã thu đủ 2.000 ms và khóa đồ thị!');
+                }
+            } else if (systemState === 'ARMED') {
+                let trigIndex = -1;
+                for (let i = 0; i < len; i++) {
+                    if (Math.abs(chunk[i]) * gainValue >= triggerThreshold) {
+                        trigIndex = i;
+                        break;
+                    }
+                }
+
+                if (trigIndex === -1) {
+                    for (let i = 0; i < len; i++) {
+                        preTriggerRing[preTriggerIdx] = chunk[i];
+                        preTriggerIdx = (preTriggerIdx + 1) % preTriggerLen;
+                    }
+                } else {
+                    waveBuffer.fill(0);
+                    const tail = preTriggerLen - preTriggerIdx;
+                    waveBuffer.set(preTriggerRing.subarray(preTriggerIdx), 0);
+                    waveBuffer.set(preTriggerRing.subarray(0, preTriggerIdx), tail);
+
+                    const postSlice = chunk.subarray(trigIndex);
+                    const copyLen = Math.min(postSlice.length, totalSamples - preTriggerLen);
+                    waveBuffer.set(postSlice.subarray(0, copyLen), preTriggerLen);
+                    capturedSamples = preTriggerLen + copyLen;
+
+                    systemState = 'TRIGGERED_RECORDING';
+                    setStatusUI('ĐANG GHI', 'bg-rose-500 animate-ping', 'text-rose-400');
+                }
+            } else if (systemState === 'TRIGGERED_RECORDING') {
+                const remain = totalSamples - capturedSamples;
+                const copyCount = Math.min(len, remain);
+                waveBuffer.set(chunk.subarray(0, copyCount), capturedSamples);
+                capturedSamples += copyCount;
+
+                const msNow = (capturedSamples / sampleRate) * 1000;
+                updateProgressBar(msNow);
+
+                if (capturedSamples >= totalSamples) {
+                    stopCapture(false);
+                    updateProgressBar(TOTAL_MS);
+                    setStatusUI('ĐÃ KHÓA', 'bg-emerald-400', 'text-emerald-300');
+                    autoFindTwoHighestPeaks();
+                    showToast('Đã bắt dính xung kích hoạt (kèm 40ms đệm trước)!');
+                }
+            }
+        }
+
+        // --- THUẬT TOÁN BẮT ĐỈNH CỤC BỘ CAO NHẤT & TÌM 2 ĐỈNH CAO NHẤT ---
+        function findNearestPeakMs(centerMs, radiusMs = null) {
+            const r = radiusMs !== null ? radiusMs : Math.max(0.8, viewSpanMs * 0.03);
+            const sIdx = Math.max(0, Math.floor(((centerMs - r) / 1000) * sampleRate));
+            const eIdx = Math.min(totalSamples - 1, Math.ceil(((centerMs + r) / 1000) * sampleRate));
+
+            let maxAmp = -1;
+            let bestIdx = Math.round((centerMs / 1000) * sampleRate);
+
+            for (let i = sIdx; i <= eIdx; i++) {
+                const amp = Math.abs(waveBuffer[i]);
+                if (amp > maxAmp) {
+                    maxAmp = amp;
+                    bestIdx = i;
+                }
+            }
+            return (bestIdx / sampleRate) * 1000;
+        }
+
+        function autoFindTwoHighestPeaks() {
+            const sIdx = Math.max(0, Math.floor((viewStartMs / 1000) * sampleRate));
+            const eIdx = Math.min(totalSamples - 1, Math.ceil(((viewStartMs + viewSpanMs) / 1000) * sampleRate));
+            if (eIdx - sIdx < 10) return;
+
+            let p1Idx = sIdx;
+            let p1Amp = -1;
+            for (let i = sIdx; i <= eIdx; i++) {
+                const v = Math.abs(waveBuffer[i]);
+                if (v > p1Amp) {
+                    p1Amp = v;
+                    p1Idx = i;
+                }
+            }
+
+            const minSepMs = viewSpanMs > 120 ? 10.0 : 4.0;
+            const guardSamples = Math.floor((minSepMs / 1000) * sampleRate);
+
+            let p2Idx = -1;
+            let p2Amp = -1;
+            for (let i = sIdx; i <= eIdx; i++) {
+                if (Math.abs(i - p1Idx) >= guardSamples) {
+                    const v = Math.abs(waveBuffer[i]);
+                    if (v > p2Amp) {
+                        p2Amp = v;
+                        p2Idx = i;
+                    }
+                }
+            }
+
+            if (p2Idx !== -1) {
+                const t1 = (p1Idx / sampleRate) * 1000;
+                const t2 = (p2Idx / sampleRate) * 1000;
+                cursorAMs = Math.min(t1, t2);
+                cursorBMs = Math.max(t1, t2);
+                updateAllReadouts();
+            }
+        }
+
+        // --- CẬP NHẬT TOÀN BỘ CHỈ SỐ ---
+        function updateAllReadouts() {
+            cursorAMs = Math.max(0, Math.min(TOTAL_MS, cursorAMs));
+            cursorBMs = Math.max(0, Math.min(TOTAL_MS, cursorBMs));
+
+            const decimals = viewSpanMs < 60 ? 3 : 2;
+            const deltaT = Math.abs(cursorBMs - cursorAMs);
+
+            const strA = cursorAMs.toFixed(decimals);
+            const strB = cursorBMs.toFixed(decimals);
+            const strDt = deltaT.toFixed(decimals);
+
+            const ampA = Math.max(-100, Math.min(100, getInterpolatedAmplitude(cursorAMs) * gainValue * 100));
+            const ampB = Math.max(-100, Math.min(100, getInterpolatedAmplitude(cursorBMs) * gainValue * 100));
+            document.getElementById('wheelAmpA').textContent = `${ampA >= 0 ? '+' : ''}${Math.round(ampA)}%`;
+            document.getElementById('wheelAmpB').textContent = `${ampB >= 0 ? '+' : ''}${Math.round(ampB)}%`;
+
+            document.getElementById('hudDeltaT').textContent = strDt;
+            document.getElementById('wheelTimeA').textContent = strA;
+            document.getElementById('wheelTimeB').textContent = strB;
+            document.getElementById('miniDeltaT').textContent = strDt;
+
+            document.getElementById('detailTimeA').textContent = cursorAMs.toFixed(3);
+            document.getElementById('detailTimeB').textContent = cursorBMs.toFixed(3);
+            document.getElementById('detailDeltaT').textContent = deltaT.toFixed(3);
+
+            let freqStr = '--- Hz';
+            let miniFreqStr = '---';
+            if (deltaT > 0.001) {
+                const freq = 1000 / deltaT;
+                if (freq >= 1000) {
+                    freqStr = `${(freq / 1000).toFixed(2)} kHz`;
+                    miniFreqStr = `${(freq / 1000).toFixed(2)}k`;
+                } else {
+                    freqStr = `${freq.toFixed(2)} Hz`;
+                    miniFreqStr = freq.toFixed(2);
+                }
+            }
+            document.getElementById('detailFreq').textContent = freqStr;
+            document.getElementById('miniFreq').textContent = miniFreqStr;
+
+            const distM = deltaT * SOUND_SPEED_M_PER_MS;
+            const distStr = distM < 1 ? `${(distM * 100).toFixed(1)} cm` : `${distM.toFixed(2)} m`;
+            document.getElementById('detailDist').textContent = distStr;
+            document.getElementById('miniDist').textContent = distStr;
+        }
+
+        function updateProgressBar(ms) {
+            const pct = Math.max(0, Math.min(100, (ms / TOTAL_MS) * 100));
+            document.getElementById('captureProgress').style.width = `${pct}%`;
+            document.getElementById('recTimerText').textContent = `${Math.round(ms)}ms`;
+        }
+
+        function setStatusUI(text, dotClass, textClass) {
+            const lbl = document.getElementById('statusLabel');
+            lbl.textContent = text;
+            lbl.className = `font-mono text-[9.5px] sm:text-[11px] font-bold tracking-tight ${textClass}`;
+            document.getElementById('statusDot').className = `w-2 h-2 rounded-full ${dotClass}`;
+        }
+
+        let toastTimer = null;
+        function showToast(msg) {
+            const banner = document.getElementById('toastBanner');
+            document.getElementById('toastMsg').textContent = msg;
+            banner.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => banner.classList.add('hidden'), 2600);
+        }
+
+        function setGain(val) {
+            gainValue = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+            document.getElementById('sliderGain').value = gainValue;
+            const db = 20 * Math.log10(gainValue);
+            document.getElementById('hudGain').textContent = `${gainValue.toFixed(1)}x`;
+            document.getElementById('detailGainLabel').textContent = `${gainValue.toFixed(1)}x (+${db.toFixed(1)} dB)`;
+
+            document.querySelectorAll('.gain-btn').forEach(btn => {
+                const g = parseFloat(btn.dataset.gain);
+                if (Math.abs(g - gainValue) < 0.05) {
+                    btn.className = 'gain-btn py-1 rounded-lg bg-emerald-500/25 border border-emerald-400/60 text-emerald-200 font-mono text-xs font-bold';
+                } else {
+                    btn.className = 'gain-btn py-1 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 font-mono text-xs';
+                }
+            });
+            updateAllReadouts();
+        }
+
+        function setZoom(newSpanMs, anchorMs = null) {
+            newSpanMs = Math.max(4.0, Math.min(TOTAL_MS, newSpanMs));
+            if (anchorMs === null) anchorMs = viewStartMs + viewSpanMs / 2;
+
+            const ratio = (anchorMs - viewStartMs) / viewSpanMs;
+            viewSpanMs = newSpanMs;
+            viewStartMs = Math.max(0, Math.min(TOTAL_MS - viewSpanMs, anchorMs - ratio * viewSpanMs));
+
+            const mult = TOTAL_MS / viewSpanMs;
+            document.getElementById('hudWindow').textContent =
+                `${viewStartMs.toFixed(1)} → ${(viewStartMs + viewSpanMs).toFixed(1)} ms`;
+            document.getElementById('hudZoom').textContent = `${mult.toFixed(1)}x`;
+            document.getElementById('detailZoomLabel').textContent = `${mult.toFixed(1)}x (${Math.round(viewSpanMs)} ms)`;
+            document.getElementById('sliderZoom').value = mult;
+            updateAllReadouts();
+        }
+
+        // --- HAI CON LĂN DỌC CƠ HỌC & NÚT VI CHỈNH 1 MẪU SÓNG ---
+        function getOneSampleMs() {
+            return 1000.0 / sampleRate;
+        }
+
+        function getWheelMsPerPixel() {
+            if (wheelSpeedMode === 'fine') return getOneSampleMs() / 8;
+            if (wheelSpeedMode === 'med') return 0.1 / 8;
+            return 1.0 / 8;
+        }
+
+        function nudgeCursor(target, deltaMs) {
+            if (target === 'A') {
+                cursorAMs = Math.max(0, Math.min(TOTAL_MS, cursorAMs + deltaMs));
+                wheelAngleA -= deltaMs * 180;
+                keepCursorInView(cursorAMs);
+            } else {
+                cursorBMs = Math.max(0, Math.min(TOTAL_MS, cursorBMs + deltaMs));
+                wheelAngleB -= deltaMs * 180;
+                keepCursorInView(cursorBMs);
+            }
+            if (navigator.vibrate) navigator.vibrate(4);
+            updateAllReadouts();
+        }
+
+        function attachJogWheel(elementId, target) {
+            const el = document.getElementById(elementId);
+            let activePointer = null;
+            let lastY = 0;
+
+            el.addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                el.setPointerCapture(e.pointerId);
+                activePointer = e.pointerId;
+                lastY = e.clientY;
+                el.style.borderColor = target === 'A' ? '#06b6d4' : '#f59e0b';
+            });
+
+            el.addEventListener('pointermove', (e) => {
+                if (activePointer !== e.pointerId) return;
+                const dy = e.clientY - lastY;
+                lastY = e.clientY;
+
+                const deltaMs = -dy * getWheelMsPerPixel();
+
+                if (target === 'A') {
+                    cursorAMs = Math.max(0, Math.min(TOTAL_MS, cursorAMs + deltaMs));
+                    wheelAngleA += dy * 1.4;
+                    triggerHaptic('A', wheelAngleA);
+                    keepCursorInView(cursorAMs);
+                } else {
+                    cursorBMs = Math.max(0, Math.min(TOTAL_MS, cursorBMs + deltaMs));
+                    wheelAngleB += dy * 1.4;
+                    triggerHaptic('B', wheelAngleB);
+                    keepCursorInView(cursorBMs);
+                }
+                updateAllReadouts();
+            });
+
+            const endDrag = (e) => {
+                if (activePointer === e.pointerId) {
+                    activePointer = null;
+                    el.style.borderColor = '';
+                    if (el.hasPointerCapture(e.pointerId)) {
+                        el.releasePointerCapture(e.pointerId);
+                    }
+                }
+            };
+            el.addEventListener('pointerup', endDrag);
+            el.addEventListener('pointercancel', endDrag);
+
+            el.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const step = (e.deltaY < 0 ? 1 : -1) * getWheelMsPerPixel() * 10;
+                if (target === 'A') {
+                    cursorAMs = Math.max(0, Math.min(TOTAL_MS, cursorAMs + step));
+                    wheelAngleA -= e.deltaY * 0.25;
+                    keepCursorInView(cursorAMs);
+                } else {
+                    cursorBMs = Math.max(0, Math.min(TOTAL_MS, cursorBMs + step));
+                    wheelAngleB -= e.deltaY * 0.25;
+                    keepCursorInView(cursorBMs);
+                }
+                updateAllReadouts();
+            }, { passive: false });
+        }
+
+        function keepCursorInView(cursorMs) {
+            const margin = viewSpanMs * 0.06;
+            if (cursorMs < viewStartMs + margin && viewStartMs > 0) {
+                viewStartMs = Math.max(0, cursorMs - margin);
+                setZoom(viewSpanMs, viewStartMs + viewSpanMs / 2);
+            } else if (cursorMs > viewStartMs + viewSpanMs - margin && viewStartMs + viewSpanMs < TOTAL_MS) {
+                viewStartMs = Math.min(TOTAL_MS - viewSpanMs, cursorMs + margin - viewSpanMs);
+                setZoom(viewSpanMs, viewStartMs + viewSpanMs / 2);
+            }
+        }
+
+        function triggerHaptic(which, angle) {
+            const notch = Math.floor(angle / 14);
+            if (which === 'A' && notch !== lastHapticStepA) {
+                lastHapticStepA = notch;
+                if (navigator.vibrate) navigator.vibrate(4);
+            } else if (which === 'B' && notch !== lastHapticStepB) {
+                lastHapticStepB = notch;
+                if (navigator.vibrate) navigator.vibrate(4);
+            }
+        }
+
+        function renderJogWheel(canvas, context, angle, accentColor) {
+            const w = canvas.clientWidth;
+            const h = canvas.clientHeight;
+            if (w <= 0 || h <= 0) return;
+
+            context.clearRect(0, 0, w, h);
+
+            const totalNotches = 24;
+            const radius = h * 0.48;
+            const centerY = h / 2;
+            const radOffset = (angle * Math.PI) / 180;
+
+            for (let i = 0; i < totalNotches; i++) {
+                const theta = (i / totalNotches) * Math.PI * 2 + radOffset;
+                const cosT = Math.cos(theta);
+                if (cosT > 0) {
+                    const y = centerY + Math.sin(theta) * radius;
+                    const alpha = Math.pow(cosT, 1.3);
+                    const isMajor = i % 4 === 0;
+                    const notchW = isMajor ? w * 0.68 : w * 0.42;
+
+                    context.strokeStyle = isMajor ? accentColor : `rgba(148, 163, 184, ${alpha * 0.7})`;
+                    context.globalAlpha = alpha;
+                    context.lineWidth = isMajor ? 2 : 1.2;
+                    context.beginPath();
+                    context.moveTo((w - notchW) / 2, y);
+                    context.lineTo((w + notchW) / 2, y);
+                    context.stroke();
+                }
+            }
+            context.globalAlpha = 1;
+        }
+
+        // --- VẼ ĐỒ THỊ SÓNG & 2 CHẤM ĐO A/B BÁM TRỰC TIẾP TRÊN SÓNG (KHÔNG KẺ VẠCH DỌC) ---
+        function getPlotMetrics() {
+            const w = waveCanvas.clientWidth;
+            const h = waveCanvas.clientHeight;
+            const padL = 36;
+            const padR = 8;
+            const padT = 22;
+            const padB = 20;
+            const plotW = Math.max(10, w - padL - padR);
+            const plotH = Math.max(10, h - padT - padB);
+            const midY = padT + plotH / 2;
+            return { w, h, padL, padR, padT, padB, plotW, plotH, midY };
+        }
+
+        function getDotScreenCoords(tMs, m) {
+            const x = m.padL + ((tMs - viewStartMs) / viewSpanMs) * m.plotW;
+            const amp = getInterpolatedAmplitude(tMs) * gainValue;
+            const y = m.midY - amp * (m.plotH / 2);
+            return { x, y };
+        }
+
+        function resizeAllCanvases() {
+            const dpr = window.devicePixelRatio || 1;
+            const list = [
+                [waveCanvas, ctx],
+                [wheelCanvasA, wCtxA],
+                [wheelCanvasB, wCtxB],
+                [miniCanvas, miniCtx]
+            ];
+            list.forEach(([cvs, context]) => {
+                const rect = cvs.parentElement.getBoundingClientRect();
+                const w = Math.max(10, rect.width);
+                const h = Math.max(10, rect.height);
+                cvs.width = w * dpr;
+                cvs.height = h * dpr;
+                context.setTransform(dpr, 0, 0, dpr, 0, 0);
+            });
+        }
+
+        function renderOscilloscope() {
+            const m = getPlotMetrics();
+            if (m.w <= 0 || m.h <= 0) return;
+
+            ctx.fillStyle = '#03060c';
+            ctx.fillRect(0, 0, m.w, m.h);
+
+            // 1. Vẽ lưới thời gian (ms) & trục biên độ %
+            drawGrid(m);
+
+            // 2. Đường mức ngưỡng Trigger ngang mảnh
+            const trigPx = triggerThreshold * (m.plotH / 2);
+            if (trigPx <= m.plotH / 2) {
+                ctx.save();
+                const isArmed = systemState === 'ARMED' || systemState === 'TRIGGERED_RECORDING';
+                ctx.strokeStyle = isArmed ? 'rgba(239, 68, 68, 0.85)' : 'rgba(239, 68, 68, 0.35)';
+                ctx.lineWidth = isArmed ? 1.3 : 1.0;
+                ctx.setLineDash([5, 4]);
+                ctx.beginPath();
+                ctx.moveTo(m.padL, m.midY - trigPx);
+                ctx.lineTo(m.padL + m.plotW, m.midY - trigPx);
+                ctx.moveTo(m.padL, m.midY + trigPx);
+                ctx.lineTo(m.padL + m.plotW, m.midY + trigPx);
+                ctx.stroke();
+
+                if (isArmed) {
+                    ctx.fillStyle = 'rgba(248, 113, 113, 0.95)';
+                    ctx.font = 'bold 9px "JetBrains Mono", monospace';
+                    ctx.textAlign = 'left';
+                    ctx.fillText(`TRIG ±${Math.round(triggerThreshold * 100)}%`, m.padL + 6, m.midY - trigPx - 4);
+                }
+                ctx.restore();
+            }
+
+            // 3. Vẽ dạng sóng PCM
+            const sIdx = Math.floor((viewStartMs / 1000) * sampleRate);
+            const eIdx = Math.min(totalSamples - 1, Math.ceil(((viewStartMs + viewSpanMs) / 1000) * sampleRate));
+            const count = Math.max(1, eIdx - sIdx);
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(m.padL, m.padT, m.plotW, m.plotH);
+            ctx.clip();
+
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = count < m.plotW ? 1.8 : 1.3;
+            ctx.beginPath();
+
+            if (count <= m.plotW * 1.5) {
+                for (let i = sIdx; i <= eIdx; i++) {
+                    const tMs = (i / sampleRate) * 1000;
+                    const x = m.padL + ((tMs - viewStartMs) / viewSpanMs) * m.plotW;
+                    const y = m.midY - (waveBuffer[i] * gainValue) * (m.plotH / 2);
+                    if (i === sIdx) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                if (count < m.plotW / 5) {
+                    ctx.fillStyle = '#34d399';
+                    for (let i = sIdx; i <= eIdx; i++) {
+                        const tMs = (i / sampleRate) * 1000;
+                        const x = m.padL + ((tMs - viewStartMs) / viewSpanMs) * m.plotW;
+                        const y = m.midY - (waveBuffer[i] * gainValue) * (m.plotH / 2);
+                        ctx.beginPath();
+                        ctx.arc(x, y, 2.1, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            } else {
+                const samplesPerPx = count / m.plotW;
+                for (let px = 0; px < m.plotW; px++) {
+                    const a = sIdx + Math.floor(px * samplesPerPx);
+                    const b = Math.min(eIdx, sIdx + Math.ceil((px + 1) * samplesPerPx));
+                    let minV = 1, maxV = -1;
+                    for (let j = a; j <= b; j++) {
+                        const v = waveBuffer[j];
+                        if (v < minV) minV = v;
+                        if (v > maxV) maxV = v;
+                    }
+                    const x = m.padL + px;
+                    const yTop = m.midY - (maxV * gainValue) * (m.plotH / 2);
+                    const yBot = m.midY - (minV * gainValue) * (m.plotH / 2);
+                    if (px === 0) ctx.moveTo(x, yTop);
+                    else ctx.lineTo(x, yTop);
+                    ctx.lineTo(x, Math.max(yTop + 1, yBot));
+                }
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            // 4. VẼ 2 CHẤM PHÁT SÁNG A (#06b6d4) & B (#f59e0b) BÁM TRỰC TIẾP TRÊN SÓNG (KHÔNG ĐƯỜNG KẺ DỌC)
+            drawWavePointMarker(cursorAMs, '#06b6d4', 'A', m);
+            drawWavePointMarker(cursorBMs, '#f59e0b', 'B', m);
+        }
+
+        function drawGrid(m) {
+            ctx.save();
+            const rawStep = viewSpanMs / 8;
+            const mag = Math.pow(10, Math.floor(Math.log10(rawStep)));
+            const norm = rawStep / mag;
+            let stepMs = mag;
+            if (norm > 5) stepMs = 10 * mag;
+            else if (norm > 2) stepMs = 5 * mag;
+            else if (norm > 1) stepMs = 2 * mag;
+
+            const firstMs = Math.ceil(viewStartMs / stepMs) * stepMs;
+            ctx.font = '8.5px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+
+            for (let t = firstMs; t <= viewStartMs + viewSpanMs; t += stepMs) {
+                const x = m.padL + ((t - viewStartMs) / viewSpanMs) * m.plotW;
+                ctx.strokeStyle = '#0e1628';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x, m.padT);
+                ctx.lineTo(x, m.padT + m.plotH);
+                ctx.stroke();
+
+                ctx.fillStyle = '#64748b';
+                const lbl = stepMs < 1 ? t.toFixed(2) : (stepMs < 10 ? t.toFixed(1) : Math.round(t).toString());
+                ctx.fillText(`${lbl}ms`, x, m.padT + m.plotH + 13);
+            }
+
+            [-1, -0.5, 0, 0.5, 1].forEach(lvl => {
+                const y = m.midY - lvl * (m.plotH / 2);
+                ctx.strokeStyle = lvl === 0 ? '#27354f' : '#0e1628';
+                ctx.lineWidth = lvl === 0 ? 1.4 : 1;
+                ctx.beginPath();
+                ctx.moveTo(m.padL, y);
+                ctx.lineTo(m.padL + m.plotW, y);
+                ctx.stroke();
+
+                ctx.fillStyle = lvl === 0 ? '#94a3b8' : '#475569';
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                const pct = Math.round((lvl / gainValue) * 100);
+                ctx.fillText(`${pct}%`, m.padL - 4, y);
+            });
+
+            ctx.strokeStyle = '#1e293b';
+            ctx.strokeRect(m.padL, m.padT, m.plotW, m.plotH);
+            ctx.restore();
+        }
+
+        function drawWavePointMarker(tMs, color, label, m) {
+            if (tMs < viewStartMs || tMs > viewStartMs + viewSpanMs) return;
+
+            const pt = getDotScreenCoords(tMs, m);
+            const clampedY = Math.max(m.padT + 4, Math.min(m.padT + m.plotH - 4, pt.y));
+
+            ctx.save();
+
+            // Vòng hào quang phát sáng nhẹ quanh chấm
+            ctx.beginPath();
+            ctx.arc(pt.x, clampedY, 12, 0, Math.PI * 2);
+            ctx.fillStyle = color === '#06b6d4' ? 'rgba(6, 182, 212, 0.22)' : 'rgba(245, 158, 11, 0.22)';
+            ctx.fill();
+
+            // Vòng viền ngoài mảnh
+            ctx.beginPath();
+            ctx.arc(pt.x, clampedY, 7.5, 0, Math.PI * 2);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Chấm tròn tâm sáng bám đúng tọa độ sóng
+            ctx.beginPath();
+            ctx.arc(pt.x, clampedY, 4.5, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Nhãn 'A' / 'B' nhỏ gọn ngay phía trên chấm
+            const badgeW = 16;
+            const badgeH = 14;
+            const badgeY = clampedY - 22 >= m.padT - 14 ? clampedY - 22 : clampedY + 9;
+
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.roundRect(pt.x - badgeW / 2, badgeY, badgeW, badgeH, 4);
+            ctx.fill();
+
+            ctx.fillStyle = '#03060c';
+            ctx.font = '800 9.5px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, pt.x, badgeY + badgeH / 2 + 0.5);
+
+            ctx.restore();
+        }
+
+        function renderMinimap() {
+            const w = miniCanvas.clientWidth;
+            const h = miniCanvas.clientHeight;
+            if (w <= 0 || h <= 0) return;
+            const mid = h / 2;
+
+            miniCtx.fillStyle = '#03060c';
+            miniCtx.fillRect(0, 0, w, h);
+
+            miniCtx.strokeStyle = 'rgba(16, 185, 129, 0.55)';
+            miniCtx.lineWidth = 1;
+            miniCtx.beginPath();
+            const step = Math.max(1, Math.floor(totalSamples / w));
+            for (let px = 0; px < w; px++) {
+                const idx = Math.floor((px / w) * totalSamples);
+                let maxV = 0;
+                for (let j = 0; j < step && idx + j < totalSamples; j += 4) {
+                    const v = Math.abs(waveBuffer[idx + j]);
+                    if (v > maxV) maxV = v;
+                }
+                const bh = Math.min(mid - 2, maxV * gainValue * (mid - 2));
+                miniCtx.moveTo(px, mid - bh);
+                miniCtx.lineTo(px, mid + bh);
+            }
+            miniCtx.stroke();
+
+            miniCtx.fillStyle = '#06b6d4';
+            miniCtx.beginPath();
+            miniCtx.arc((cursorAMs / TOTAL_MS) * w, mid, 3, 0, Math.PI * 2);
+            miniCtx.fill();
+
+            miniCtx.fillStyle = '#f59e0b';
+            miniCtx.beginPath();
+            miniCtx.arc((cursorBMs / TOTAL_MS) * w, mid, 3, 0, Math.PI * 2);
+            miniCtx.fill();
+
+            const vx = (viewStartMs / TOTAL_MS) * w;
+            const vw = Math.max(8, (viewSpanMs / TOTAL_MS) * w);
+            miniCtx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+            miniCtx.fillRect(vx, 0, vw, h);
+            miniCtx.strokeStyle = '#38bdf8';
+            miniCtx.lineWidth = 1.5;
+            miniCtx.strokeRect(vx, 0.5, vw, h - 1);
+        }
+
+        function renderLoop() {
+            renderOscilloscope();
+            renderJogWheel(wheelCanvasA, wCtxA, wheelAngleA, '#06b6d4');
+            renderJogWheel(wheelCanvasB, wCtxB, wheelAngleB, '#f59e0b');
+            if (isDrawerOpen) renderMinimap();
+            requestAnimationFrame(renderLoop);
+        }
+
+        // --- CHẠM GHIM ĐỈNH, KÉO TRỰC TIẾP CHẤM A/B HOẶC KÉO CUỘN (PAN) TRÊN ĐỒ THỊ ---
+        waveCanvas.addEventListener('pointerdown', (e) => {
+            const rect = waveCanvas.getBoundingClientRect();
+            const px = e.clientX - rect.left;
+            const py = e.clientY - rect.top;
+            const m = getPlotMetrics();
+
+            // 1. Nếu đang bật chế độ GHIM A hoặc GHIM B -> tự động bắt đỉnh cục bộ cao nhất quanh điểm chạm
+            if (pendingPinTarget === 'A' || pendingPinTarget === 'B') {
+                const relX = Math.max(0, Math.min(1, (px - m.padL) / m.plotW));
+                const touchedMs = viewStartMs + relX * viewSpanMs;
+                const snapRadiusMs = Math.max(1.2, viewSpanMs * 0.035);
+                const peakMs = findNearestPeakMs(touchedMs, snapRadiusMs);
+
+                const who = pendingPinTarget;
+                if (who === 'A') {
+                    cursorAMs = peakMs;
+                } else {
+                    cursorBMs = peakMs;
+                }
+                if (navigator.vibrate) navigator.vibrate(10);
+                updateAllReadouts();
+                setPinMode(null);
+                showToast(`Đã ghim chấm ${who} vào đỉnh tại ${peakMs.toFixed(2)} ms.`);
+                return;
+            }
+
+            // 2. Chế độ kéo chấm A/B hoặc kéo trượt đồ thị bình thường
+            waveCanvas.setPointerCapture(e.pointerId);
+
+            const ptA = getDotScreenCoords(cursorAMs, m);
+            const ptB = getDotScreenCoords(cursorBMs, m);
+            const clampedYA = Math.max(m.padT + 4, Math.min(m.padT + m.plotH - 4, ptA.y));
+            const clampedYB = Math.max(m.padT + 4, Math.min(m.padT + m.plotH - 4, ptB.y));
+
+            const distA = Math.hypot(px - ptA.x, py - clampedYA);
+            const distB = Math.hypot(px - ptB.x, py - clampedYB);
+            const hitRadius = 26;
+
+            if (distA <= hitRadius && distA <= distB) {
+                canvasDragMode = 'DOT_A';
+                waveCanvas.style.cursor = 'ew-resize';
+            } else if (distB <= hitRadius) {
+                canvasDragMode = 'DOT_B';
+                waveCanvas.style.cursor = 'ew-resize';
+            } else {
+                canvasDragMode = 'PAN';
+                panStartX = e.clientX;
+                panStartViewMs = viewStartMs;
+                waveCanvas.style.cursor = 'grabbing';
+            }
+        });
+
+        waveCanvas.addEventListener('pointermove', (e) => {
+            if (!canvasDragMode) return;
+            const rect = waveCanvas.getBoundingClientRect();
+            const m = getPlotMetrics();
+
+            if (canvasDragMode === 'DOT_A' || canvasDragMode === 'DOT_B') {
+                const px = e.clientX - rect.left;
+                const relX = Math.max(0, Math.min(1, (px - m.padL) / m.plotW));
+                const newMs = viewStartMs + relX * viewSpanMs;
+                if (canvasDragMode === 'DOT_A') {
+                    cursorAMs = newMs;
+                } else {
+                    cursorBMs = newMs;
+                }
+                updateAllReadouts();
+            } else if (canvasDragMode === 'PAN') {
+                const dx = e.clientX - panStartX;
+                const deltaMs = (dx / m.plotW) * viewSpanMs;
+                viewStartMs = Math.max(0, Math.min(TOTAL_MS - viewSpanMs, panStartViewMs - deltaMs));
+                setZoom(viewSpanMs, viewStartMs + viewSpanMs / 2);
+            }
+        });
+
+        const stopCanvasInteraction = (e) => {
+            canvasDragMode = null;
+            waveCanvas.style.cursor = pendingPinTarget ? 'crosshair' : 'grab';
+            if (waveCanvas.hasPointerCapture(e.pointerId)) {
+                waveCanvas.releasePointerCapture(e.pointerId);
+            }
+        };
+        waveCanvas.addEventListener('pointerup', stopCanvasInteraction);
+        waveCanvas.addEventListener('pointercancel', stopCanvasInteraction);
+
+        waveCanvas.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                canvasDragMode = null;
+                pinchDistStart = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                pinchSpanStart = viewSpanMs;
+            }
+        }, { passive: true });
+
+        waveCanvas.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && pinchDistStart) {
+                e.preventDefault();
+                const dist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                setZoom(pinchSpanStart * (pinchDistStart / Math.max(10, dist)));
+            }
+        }, { passive: false });
+
+        waveCanvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const rect = waveCanvas.getBoundingClientRect();
+            const m = getPlotMetrics();
+            const relX = Math.max(0, Math.min(1, (e.clientX - rect.left - m.padL) / m.plotW));
+            const anchorMs = viewStartMs + relX * viewSpanMs;
+            setZoom(viewSpanMs * (e.deltaY > 0 ? 1.25 : 0.8), anchorMs);
+        }, { passive: false });
+
+        miniCanvas.addEventListener('pointerdown', (e) => {
+            miniCanvas.setPointerCapture(e.pointerId);
+            canvasDragMode = 'MINIMAP';
+            moveMinimap(e);
+        });
+        miniCanvas.addEventListener('pointermove', (e) => {
+            if (canvasDragMode === 'MINIMAP') moveMinimap(e);
+        });
+        miniCanvas.addEventListener('pointerup', (e) => {
+            canvasDragMode = null;
+            if (miniCanvas.hasPointerCapture(e.pointerId)) miniCanvas.releasePointerCapture(e.pointerId);
+        });
+
+        function moveMinimap(e) {
+            const rect = miniCanvas.getBoundingClientRect();
+            const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            const centerMs = ratio * TOTAL_MS;
+            viewStartMs = Math.max(0, Math.min(TOTAL_MS - viewSpanMs, centerMs - viewSpanMs / 2));
+            setZoom(viewSpanMs, viewStartMs + viewSpanMs / 2);
+        }
+
+        // --- NGĂN THÔNG SỐ TRƯỢT TỪ DƯỚI ĐÁY (BOTTOM SHEET) ---
+        const bottomDrawer = document.getElementById('bottomDrawer');
+        const drawerHandle = document.getElementById('drawerHandle');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+        const drawerChevron = document.getElementById('drawerChevron');
+        let isDrawerOpen = false;
+        let drawerDragStartY = null;
+        let drawerMoved = false;
+
+        function getClosedDrawerTransform() {
+            return 'translateY(calc(100% - var(--drawer-bar-h) - var(--safe-bottom)))';
+        }
+
+        function setDrawerState(open) {
+            isDrawerOpen = open;
+            if (open) {
+                bottomDrawer.style.transform = 'translateY(0px)';
+                drawerBackdrop.classList.remove('hidden');
+                requestAnimationFrame(() => drawerBackdrop.classList.remove('opacity-0'));
+                drawerChevron.style.transform = 'rotate(180deg)';
+                resizeAllCanvases();
+                renderMinimap();
+            } else {
+                bottomDrawer.style.transform = getClosedDrawerTransform();
+                drawerBackdrop.classList.add('opacity-0');
+                setTimeout(() => {
+                    if (!isDrawerOpen) drawerBackdrop.classList.add('hidden');
+                }, 220);
+                drawerChevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        drawerHandle.addEventListener('pointerdown', (e) => {
+            drawerHandle.setPointerCapture(e.pointerId);
+            drawerDragStartY = e.clientY;
+            drawerMoved = false;
+            bottomDrawer.style.transition = 'none';
+        });
+
+        drawerHandle.addEventListener('pointermove', (e) => {
+            if (drawerDragStartY === null) return;
+            const dy = e.clientY - drawerDragStartY;
+            if (Math.abs(dy) > 5) drawerMoved = true;
+
+            const safeBottom = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom')) || 0;
+            const maxOffset = Math.max(40, bottomDrawer.offsetHeight - 40 - safeBottom);
+            const baseOffset = isDrawerOpen ? 0 : maxOffset;
+            const nextOffset = Math.max(0, Math.min(maxOffset, baseOffset + dy));
+            bottomDrawer.style.transform = `translateY(${nextOffset}px)`;
+        });
+
+        drawerHandle.addEventListener('pointerup', (e) => {
+            if (drawerDragStartY === null) return;
+            const dy = e.clientY - drawerDragStartY;
+            drawerDragStartY = null;
+            bottomDrawer.style.transition = '';
+            if (drawerHandle.hasPointerCapture(e.pointerId)) {
+                drawerHandle.releasePointerCapture(e.pointerId);
+            }
+
+            if (!drawerMoved) {
+                setDrawerState(!isDrawerOpen);
+            } else {
+                if (dy < -30) setDrawerState(true);
+                else if (dy > 30) setDrawerState(false);
+                else setDrawerState(isDrawerOpen);
+            }
+        });
+
+        drawerBackdrop.addEventListener('click', () => setDrawerState(false));
+
+        // --- TOÀN MÀN HÌNH (FULLSCREEN API + CSS FALLBACK) ---
+        function toggleFullscreen() {
+            const nativeFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            const cssFs = document.body.classList.contains('css-fullscreen');
+
+            if (!nativeFs && !cssFs) {
+                const el = document.documentElement;
+                if (el.requestFullscreen) {
+                    el.requestFullscreen().catch(() => {
+                        document.body.classList.add('css-fullscreen');
+                        updateFsIcon(true);
+                    });
+                } else if (el.webkitRequestFullscreen) {
+                    el.webkitRequestFullscreen();
+                } else {
+                    document.body.classList.add('css-fullscreen');
+                    updateFsIcon(true);
+                }
+            } else {
+                if (nativeFs) {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                }
+                document.body.classList.remove('css-fullscreen');
+                updateFsIcon(false);
+            }
+        }
+
+        function updateFsIcon(active) {
+            document.getElementById('iconFsOpen').classList.toggle('hidden', active);
+            document.getElementById('iconFsClose').classList.toggle('hidden', !active);
+            setTimeout(resizeAllCanvases, 60);
+        }
+
+        document.addEventListener('fullscreenchange', () => updateFsIcon(!!document.fullscreenElement));
+        document.addEventListener('webkitfullscreenchange', () => updateFsIcon(!!document.webkitFullscreenElement));
+
+        // --- GẮN SỰ KIỆN CHO TẤT CẢ NÚT ĐIỀU KHIỂN ---
+        document.getElementById('btnRecord').addEventListener('click', () => startCapture('RECORDING'));
+        document.getElementById('btnTrigger').addEventListener('click', () => {
+            if (systemState === 'ARMED') {
+                stopCapture(false);
+                setStatusUI('ĐÃ KHÓA', 'bg-slate-500', 'text-slate-400');
+            } else {
+                startCapture('ARMED');
+            }
+        });
+        document.getElementById('btnStop').addEventListener('click', () => stopCapture(true));
+        document.getElementById('btnSample').addEventListener('click', generateSamplePulses);
+        document.getElementById('btnFullscreen').addEventListener('click', toggleFullscreen);
+
+        // Nút kích hoạt Ghim A / Ghim B
+        document.getElementById('btnPinModeA').addEventListener('click', () => setPinMode('A'));
+        document.getElementById('btnPinModeB').addEventListener('click', () => setPinMode('B'));
+        document.getElementById('btnCancelPin').addEventListener('click', () => setPinMode(null));
+
+        // Nút nhích đúng 1 mẫu sóng ▲ / ▼
+        document.getElementById('btnStepUpA').addEventListener('click', () => nudgeCursor('A', getOneSampleMs()));
+        document.getElementById('btnStepDownA').addEventListener('click', () => nudgeCursor('A', -getOneSampleMs()));
+        document.getElementById('btnStepUpB').addEventListener('click', () => nudgeCursor('B', getOneSampleMs()));
+        document.getElementById('btnStepDownB').addEventListener('click', () => nudgeCursor('B', -getOneSampleMs()));
+
+        // Nút chuyển 3 tốc độ con lăn
+        document.querySelectorAll('.speed-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                wheelSpeedMode = btn.dataset.speed;
+                document.querySelectorAll('.speed-btn').forEach(b => {
+                    if (b.dataset.speed === wheelSpeedMode) {
+                        b.className = 'speed-btn py-0.5 sm:py-1 px-1 rounded-lg bg-emerald-500/25 border border-emerald-400/60 text-emerald-200 font-bold text-[10px] sm:text-[11px] leading-tight transition';
+                    } else {
+                        b.className = 'speed-btn py-0.5 sm:py-1 px-1 rounded-lg bg-transparent border border-transparent text-slate-400 hover:text-slate-200 font-semibold text-[10px] sm:text-[11px] leading-tight transition';
+                    }
+                });
+            });
+        });
+
+        // Nút Tìm 2 đỉnh
+        document.getElementById('btnFind2Peaks').addEventListener('click', () => {
+            autoFindTwoHighestPeaks();
+            showToast('Đã đặt chấm A & B lên 2 đỉnh xung cao nhất.');
+        });
+
+        // Điều khiển trong ngăn kéo đáy
+        document.getElementById('sliderGain').addEventListener('input', (e) => setGain(e.target.value));
+        document.querySelectorAll('.gain-btn').forEach(btn => {
+            btn.addEventListener('click', () => setGain(btn.dataset.gain));
+        });
+
+        document.getElementById('sliderTrigger').addEventListener('input', (e) => {
+            triggerThreshold = parseFloat(e.target.value);
+            document.getElementById('detailTrigLabel').textContent = `${Math.round(triggerThreshold * 100)}%`;
+        });
+
+        document.getElementById('sliderZoom').addEventListener('input', (e) => {
+            const mult = parseFloat(e.target.value);
+            setZoom(TOTAL_MS / mult);
+        });
+        document.getElementById('btnResetZoom').addEventListener('click', () => setZoom(2000, 1000));
+
+        // Khởi tạo ứng dụng
+        attachJogWheel('jogWheelA', 'A');
+        attachJogWheel('jogWheelB', 'B');
+        window.addEventListener('resize', resizeAllCanvases);
+        window.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'f') toggleFullscreen();
+            if (e.key === 'Escape') setPinMode(null);
+            if (e.key === ' ') { e.preventDefault(); stopCapture(true); }
+        });
+
+        window.addEventListener('load', () => {
+            resizeAllCanvases();
+            setGain(1.0);
+            generateSamplePulses();
+            renderLoop();
+        });
+    </script>
+</body>
+</html>
